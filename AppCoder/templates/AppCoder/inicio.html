@@ -1,0 +1,52 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+<header class="masthead">
+    <div class="container position-relative">
+        <div class="row justify-content-center">
+            <div class="col-xl-6">
+                <div class="text-center text-white">
+                    
+                    <h1 class="mb-5">Servicio Tecnico - CoderHouse</h1>                           
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+    <!--<h1>Este es el título del Inicio que cambio</h1>-->
+  
+
+    <h3>Podes buscar una reparacion:</h3>
+
+    <form action="/AppCoder/buscar/" method="GET">
+
+        <input type="number" name="camada" id="camada">
+
+        <input type="submit" value="Buscar">
+
+
+
+
+    </form>
+
+    
+
+    {% if reparaciones %}
+
+    <p>Estamos buscando el: {{camada}}</p>
+
+    <ul>
+	{% for reparacion in reparaciones %}
+		<li> {{reparacion.nombre}} </li>
+		<li> {{reparacion.camada}} </li>
+	{% endfor %}
+
+    </ul>
+
+    {% endif %}
+
+{% endblock %}
